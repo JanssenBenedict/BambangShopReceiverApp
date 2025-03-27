@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [✓] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [✓] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [✓] Commit: `Create Notification service struct skeleton.`
+    -   [✓] Commit: `Implement subscribe function in Notification service.`
+    -   [✓] Commit: `Implement subscribe function in Notification controller.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification service.`
+    -   [✓] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [✓] Commit: `Implement receive_notification function in Notification service.`
+    -   [✓] Commit: `Implement receive function in Notification controller.`
+    -   [✓] Commit: `Implement list_messages function in Notification service.`
+    -   [✓] Commit: `Implement list function in Notification controller.`
+    -   [✓] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -95,3 +95,15 @@ Answer:<br>
 In Java, mutable static variables can be defined and modification of the static data can be done without restrictions. However, in Rust, mutable static variables have major restrictions and limitations at compile-time due to Rust's prioritization of thread safety. To mitigate this issue, the lazy_static external library is utilized. lazy_static allows the static variable to be initialized once at the runtime, then it can be used safely as a mutable static variable afterwards.
 
 #### Reflection Subscriber-2
+
+1. Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.<br>
+Answer:<br>
+Yes, I have explored things outside of the steps in the tutorial, such as the lib.rs file. The lib.rs file's main purpose is to define the shared components, configuration, and error handling for the application or project itself. The file defines APP_CONFIG, which is meant to initialize the configuration of the application from environment variables (loaded utilizing dotenvy and Figment). Then, the AppConfig structure holds the configuration values or settings, such as instance_root_url, publisher_root_url, and instance_name, and it uses getset::Getters to create getter methods prefixed with "get_" for the structure's configuration values, making it so the that boilerplate code doesn't need to be written manually. The file also defines REQWEST_CLIENT, which is meant to initialize a global HTTP client that could be reused all across the application, increasing efficiency by allowing the same client to be used in multiple requests without the need for constant reinitialization. The file also implements the compose_error_response function to achieve error handling by generating standardized error responses (ErrorResponse) in a simple and consistent format.
+
+2. Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?<br>
+Answer:<br>
+The Observer pattern eases me into plugging in more subscribers by allowing me to utilize Rust traits to handle different types of subscribers with their own separate behaviors. This implementation follows the Open-Closed Principle and helps with increasing flexibility and maintainability. Spawning more than one instance of the Main app will result in each instance having their own independent notification mechanisms where notifications of events will be received by the registered subscribers who subscribed to the relevant product type.
+
+3. Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).<br>
+Answer:<br>
+Yes, I have tried those features and they were very useful for my work. By utilizing Postman, the testing process became much more straightforward and convienient. By implementing the unit tests for every component, I can confirm that each functionality behaves as expected. This allows for more efficient testing that could cover various features or cases without the need for excessive manual repetition of running the tests.
